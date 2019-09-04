@@ -1,0 +1,62 @@
+#端口
+server:
+  port: 10000
+#服务id
+spring:
+  application:
+    name: gateway
+#eureka客户端
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://192.168.207.111:10086/eureka
+  instance:
+    prefer-ip-address: true #上报ip地址
+    #ip-address: 127.0.0.1
+    #instance-id: ${eureka.instance.ip-address}:${server.port}
+    #lease-renewal-interval-in-seconds: 5 #开发阶段改小
+#负载均衡
+ribbon:
+  eager-load:
+    enabled: true
+#负载均衡配置
+  ConnectTimeout: 2000 # 连接超时时间(ms)
+  ReadTimeout: 2000 # 通信超时时间(ms)
+  OkToRetryOnAllOperations: true # 是否对所有操作重试
+  MaxAutoRetriesNextServer: 0 # 同一服务不同实例的重试次数
+  MaxAutoRetries: 1 # 同一实例的重试次数
+
+#熔断器配置
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMillisecond: 10000 # 熔断超时时长：10000ms
+
+#网关的配置
+zuul:
+  prefix: /web
+  ignore-local-service: true
+  ignored-services:
+    - tensquare-eureka
+  #路由规则：
+  routes:
+    # key： 是服务id
+    # value: 映射的规则
+    # http://localhost:10000/web/base/基础微服务的url拼接过来即可
+    tensquare-base: /base/**  
+    tensquare-article: /article/**  
+    tensquare-recruit: /recruit/**  # http://localhost:10000/web/recruit/recruit/search/{page}/{size}
+    tensquare-qa: /qa/**  # http://localhost:10000/web/qa/problem
+    tensquare-gathering: /gathering/** #http://localhost:10000/web/gathering
+    tensquare-spit: /spit/** #http://localhost:10000/web/spit  
+    tensquare-user: /user/** #http://localhost:10000/web/user  
+
+      
+      
+      
+      

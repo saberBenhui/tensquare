@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: tensquare-06-qa
+Implementation-Version: 1.0-SNAPSHOT
+Built-By: it
+Implementation-Vendor-Id: com.tensquare
+Build-Jdk: 1.8.0_25
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/tensquare-parent/tensquare-06-qa
+Created-By: Maven Integration for Eclipse
+

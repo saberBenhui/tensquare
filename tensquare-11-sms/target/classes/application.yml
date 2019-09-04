@@ -1,0 +1,14 @@
+server: 
+  port: 9008
+spring: 
+  application:  
+    name: tensquare-sms #指定服务名
+  rabbitmq:
+    host: 192.168.207.111
+
+aliyun:
+  sms:
+    accessKeyId: LTAIyGRm0fsORP7N
+    accessKeySecret: m2HeJrWPylmBpPjpLAoB0EPHfV0q5f
+    template_code: SMS_160305839
+    sign_name: 陈飞的博客
